@@ -1,194 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Expense</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        /* General Body Styling */
-        body {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-        }
+      /* General Body Styling */
+      body {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
 
-        /* Sidebar Styling */
-        .sidebar {
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 20px 10px;
-            position: fixed;
-            width: 220px;
-            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
-        }
+      /* Sidebar Styling */
+      .sidebar {
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 20px 10px;
+        position: fixed;
+        width: 220px;
+        box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+      }
 
-        .sidebar h4 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+      .sidebar h4 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
 
-        .sidebar a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+      .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
 
-        .sidebar a:hover, .sidebar .active {
-            background-color: #4e5d6c;
-        }
+      .sidebar a:hover,
+      .sidebar .active {
+        background-color: #4e5d6c;
+      }
 
-        /* Content Centering */
-        .content {
-            margin-left: 240px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      /* Content Centering */
+      .content {
+        margin-left: 240px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            padding: 30px;
-            width: 400px;
-            color: #333;
-        }
+      .form-container {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        width: 400px;
+        color: #333;
+      }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #5b52d0;
-        }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #5b52d0;
+      }
 
-        /* Form Field Styling */
-        .form-label {
-            font-weight: bold;
-            color: #555;
-        }
+      /* Form Field Styling */
+      .form-label {
+        font-weight: bold;
+        color: #555;
+      }
 
-        .form-control {
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
+      .form-control {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        transition: all 0.3s ease;
+      }
 
-        .form-control:focus {
-            border-color: #5b52d0;
-            box-shadow: 0 0 5px rgba(91, 82, 208, 0.5);
-        }
+      .form-control:focus {
+        border-color: #5b52d0;
+        box-shadow: 0 0 5px rgba(91, 82, 208, 0.5);
+      }
 
-        .btn-primary {
-            background-color: #5b52d0;
-            border-color: #5b52d0;
-            border-radius: 8px;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
+      .btn-primary {
+        background-color: #5b52d0;
+        border-color: #5b52d0;
+        border-radius: 8px;
+        padding: 10px;
+        transition: all 0.3s ease;
+      }
 
-        .btn-primary:hover {
-            background-color: #473bad;
-            border-color: #473bad;
-        }
+      .btn-primary:hover {
+        background-color: #473bad;
+        border-color: #473bad;
+      }
 
-        /* Notification Styling */
-        .alert {
-            margin-bottom: 20px;
-        }
+      /* Notification Styling */
+      .alert {
+        margin-bottom: 20px;
+      }
 
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-        }
+      .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+      }
 
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
+      .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
 
-        .btn-close {
-            color: inherit;
-            opacity: 1;
-        }
+      .btn-close {
+        color: inherit;
+        opacity: 1;
+      }
 
-        /* Footer Styling */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
+      /* Footer Styling */
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h4>FamilyFinancialTracking</h4>
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'dashboard' %}" class="active">Dashboard</a>
-        
-        <a href="{% url 'add_income' %}">Add Income</a>
-        <a href="{% url 'add_expense' %}">Add Expense</a>
-        <a href="{% url 'history' %}">History</a>
-        <a href="{% url 'logout' %}" class="mt-5">Logout</a>
+      <h4>Family Financial System</h4>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'dashboard' %}" class="active">Dashboard</a>
+
+      <a href="{% url 'add_income' %}">Add Income</a>
+      <a href="{% url 'add_expense' %}">Add Expense</a>
+      <a href="{% url 'history' %}">History</a>
+      <a href="{% url 'logout' %}" class="mt-5">Logout</a>
     </div>
 
     <!-- Main Content -->
     <div class="content">
-        <div class="form-container">
-            <h2>Add Expense</h2>
-            
-            <!-- Display notifications -->
-            {% if messages %}
-                <div class="alert alert-dismissible fade show" role="alert">
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endif %}
-            
-            <form action="{% url 'add_expense' %}" method="post">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="amount" class="form-label">Amount</label>
-                    <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
-                </div>
-                <div class="mb-3">
-                    <label for="date" class="form-label">Date</label>
-                    <input type="date" class="form-control" id="date" name="date" required>
-                </div>
-                <div class="mb-3">
-                    <label for="category" class="form-label">Category</label>
-                    <input type="text" class="form-control" id="category" name="category" placeholder="Enter category" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Add Expense</button>
-            </form>
+      <div class="form-container">
+        <h2>Add Expense</h2>
+
+        <!-- Display notifications -->
+        {% if messages %}
+        <div class="alert alert-dismissible fade show" role="alert">
+          {% for message in messages %}
+          <p>{{ message }}</p>
+          {% endfor %}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
         </div>
+        {% endif %}
+
+        <form action="{% url 'add_expense' %}" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input
+              type="number"
+              class="form-control"
+              id="amount"
+              name="amount"
+              placeholder="Enter amount"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="date"
+              name="date"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input
+              type="text"
+              class="form-control"
+              id="category"
+              name="category"
+              placeholder="Enter category"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">
+            Add Expense
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 FamilyFinancialTracking. All rights reserved.</p>
+      <p>&copy; 2025 Family Financial System. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>

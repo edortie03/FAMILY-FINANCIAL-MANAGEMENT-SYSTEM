@@ -1,163 +1,171 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <!-- Add CSS -->
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #4B0082, #8A2BE2);
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Arial, sans-serif";
+      }
+      body {
+        background: linear-gradient(135deg, #4b0082, #8a2be2);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
 
-        /* Navigation Bar */
-        nav {
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 2rem;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 10px;
-        }
-        nav a:hover {
-            color: #FFD700;
-        }
+      /* Navigation Bar */
+      nav {
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 10px;
+      }
+      nav a:hover {
+        color: #ffd700;
+      }
 
-        /* Centered Login Card */
-        .container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .login-box {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            text-align: center;
-            width: 100%;
-            max-width: 400px;
-        }
-        h1 {
-            margin-bottom: 1rem;
-            color: #FFD700;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            outline: none;
-        }
-        input[type="text"], input[type="password"] {
-            background: rgba(255, 255, 255, 0.8);
-            color: #333;
-        }
-        button {
-            background: #FFD700;
-            color: #333;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-        }
-        button:hover {
-            background: #FFC300;
-        }
-        .options {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: start;
-            font-size: 0.9rem;
-        }
-        .options label {
-            color: #fff;
-        }
+      /* Centered Login Card */
+      .container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .login-box {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+      }
+      h1 {
+        margin-bottom: 1rem;
+        color: #ffd700;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+      }
+      input[type="text"],
+      input[type="password"] {
+        background: rgba(255, 255, 255, 0.8);
+        color: #333;
+      }
+      button {
+        background: #ffd700;
+        color: #333;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        width: 100%;
+      }
+      button:hover {
+        background: #ffc300;
+      }
+      .options {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: start;
+        font-size: 0.9rem;
+      }
+      .options label {
+        color: #fff;
+      }
 
-        /* Flash Messages */
-        .messages {
-            list-style: none;
-            margin: 10px 0;
-        }
-        .messages li {
-            background: #FFD700;
-            color: #333;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 5px 0;
-        }
+      /* Flash Messages */
+      .messages {
+        list-style: none;
+        margin: 10px 0;
+      }
+      .messages li {
+        background: #ffd700;
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 5px 0;
+      }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.3);
-            margin-top: auto;
-        }
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.3);
+        margin-top: auto;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">
-            <a href="{% url 'home' %}">Home</a>
-        </div>
-        <div>
-            <a href="{% url 'register' %}">Register</a>
-        </div>
+      <div class="logo">
+        <a href="{% url 'home' %}">Home</a>
+      </div>
+      <div>
+        <a href="{% url 'register' %}">Register</a>
+      </div>
     </nav>
 
     <!-- Flash Messages -->
     {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor%} {% endif %}
+    </ul>
 
     <!-- Login Container -->
     <div class="container">
-        <div class="login-box">
-            <h1>Login</h1>
-            <form method="POST">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="remember_me"> Remember Me
-                    </label>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <p style="margin-top: 1rem;">Don't have an account? <a href="{% url 'register' %}" style="color: #FFD700;">Register</a></p>
-        </div>
+      <div class="login-box">
+        <h1>Login</h1>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" name="username" placeholder="Username" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <div class="options">
+            <label>
+              <input type="checkbox" name="remember_me" /> Remember Me
+            </label>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <p style="margin-top: 1rem">
+          Don't have an account?
+          <a href="{% url 'register' %}" style="color: #ffd700">Register</a>
+        </p>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 FamilyFinancialTracking. All Rights Reserved.</p>
+      <p>&copy; 2025 Family Financial System. All Rights Reserved.</p>
     </footer>
-</body>
+  </body>
 </html>
